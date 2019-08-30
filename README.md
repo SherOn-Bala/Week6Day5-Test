@@ -1,4 +1,4 @@
-[Algorithms](app/src/main/java/ca/judacribz/week6day5_test/Algorithms.java) <br />
+[Algorithms](app/src/main/java/com/example/week6day5_test/Algorithms.java) <br />
 
 ### Coding test ###
 1. <b>Write a method that takes an int array and a int target value as parameters. The int Array will be a guaranteed to be a sorted array of unique positive values. Have the method find the index in the target value if it exist in the array.  If not, return -1.  Time complexity allowed:  O ( log n )</b>
