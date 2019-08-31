@@ -1,8 +1,10 @@
 package com.example.week6day5_test;
 
+import java.util.Arrays;
+
 import static java.util.Arrays.sort;
 
-public class Algorithms {
+class Algorithms {
 
     /* 1. Write a method that takes an int array and a int target value as parameters. The int
      * Array will be a guaranteed to be a sorted array of unique  positive values. Have the method
@@ -62,13 +64,12 @@ public class Algorithms {
         int j = 1;
 
         for (int i = 1; i < arr.length; i++) {
-            if (binarySearch(newArr, arr[i]) == -1) {
+            if (sortBinarySearch(Arrays.copyOf(newArr, j), arr[i]) == -1) {
                 if (j >= newArr.length) {
                     newArr = doubleArr(newArr);
                 }
 
                 newArr[j] = arr[i];
-                sort(newArr);
                 j++;
             }
 
@@ -77,21 +78,29 @@ public class Algorithms {
         return (j < newArr.length) ? resizeArr(newArr, j) : newArr;
     }
 
+    // Helper function to sort array before doing binary search.
+    private static int sortBinarySearch(int[] copyOf, int target) {
+        sort(copyOf);
+        return binarySearch(copyOf, target);
+    }
+
+    // Helper function to double array size.
     private static int[] doubleArr(int[] arr) {
         return resizeArr(arr, arr.length * 2);
     }
 
+    // Helper function to resize array.
     private static int[] resizeArr(int[] arr, int size) {
-        int[] neWarr = new int[size];
+        int[] newArr = new int[size];
 
         for (int i = 0; i < arr.length; i++) {
             if (i == size) {
                 break;
             }
-            neWarr[i] = arr[i];
+            newArr[i] = arr[i];
         }
 
-        return neWarr;
+        return newArr;
     }
 
 }
